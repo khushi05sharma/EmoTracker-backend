@@ -74,21 +74,12 @@ Respond ONLY with valid JSON in exactly this format, with no extra text before o
 
     // send the clean object back to the frontend
     res.json(parsed);
-  } 
-  // catch (error) {
-  //   console.error("Error generating AI insight:", error);
+  } catch (error) {
+    console.error("Error generating AI insight:", error);
 
-  //   //send a generic error back to the frontend — no internal details leaked
-  //   res.status(500).json({ error: "Failed to generate AI insight" });
-  // }
-
-  catch (error) {
-  console.error(error);
-
-  res.status(500).json({
-    error: error.message,
-  });
-}
+    //send a generic error back to the frontend — no internal details leaked
+    res.status(500).json({ error: "Failed to generate AI insight" });
+  }
 });
 
 const PORT = process.env.PORT || 5000;
